@@ -1,5 +1,12 @@
-<script setup>
-
+<script>
+export default {
+  props: ['results'],
+  methods: {
+    onResetResult() {
+      this.$emit('reset-results');
+    }
+  }
+}
 </script>
 
 <template>
@@ -9,16 +16,18 @@
         <span class="label">Tip Amount</span>
         <span>/ person</span>
       </p>
-      <p class="tip-per-person_value">$0.00</p>
+      <p class="tip-per-person_value">${{results.totalTip.toFixed(2)}}</p>
     </div>
     <div class="total-per-person">
       <p class="total-per-person_text">
         <span class="label">Total</span>
         <span>/ person</span>
       </p>
-      <p class="total-per-person_value">$0.00</p>
+      <p class="total-per-person_value">${{results.totalAmount.toFixed(2)}}</p>
     </div>
-    <b-button class="reset-btn">RESET</b-button>
+    <b-button class="reset-btn"
+              :disabled="results.totalAmount <= 0 && results.totalTip <= 0"
+              @click="onResetResult">RESET</b-button>
   </div>
 </template>
 

@@ -1,41 +1,74 @@
 <script setup>
-
 import SelectTip from "@/components/select-tip.vue";
 </script>
-
+<script>
+export default {
+  data() {
+    return {
+      form: {
+        bill: null,
+        numOfPeople: null,
+        tipPercentage: null
+      }
+    }
+  },
+  created() {
+  },
+  methods: {
+    onFormChange() {
+      this.$emit('change-form-data', this.form);
+    },
+    onSelectTip(tip) {
+      this.form.tipPercentage = tip;
+      this.$emit('change-form-data', this.form);
+    },
+    blockDecimal(event) {
+      if (event.keyCode === 190 || event.keyCode === 110) {
+        event.preventDefault();
+      }
+    }
+  }
+}
+</script>
 <template>
-  <b-form class="calc-form">
+  <b-form class="calc-form"
+          @change="onFormChange"
+          ref="calcForm">
     <b-form-group
         class="form-group"
         id="input-group-1"
         label="Bill"
         label-for="bill-val">
-<!--      <small class="error">Can't be zero</small>-->
+      <small class="error" v-if="form.bill <= 0 && form.bill !== null">Can't be zero</small>
       <b-input-group size="lg">
         <b-input-group-text>
           <img src="../assets/images/icon-dollar.svg" /></b-input-group-text>
         <b-form-input id="bill-val"
-                      type="text"
-                      placeholder="0"></b-form-input>
+                      type="number"
+                      placeholder="0"
+                      v-model="form.bill"></b-form-input>
 
       </b-input-group>
     </b-form-group>
     <div class="select-input-group">
       <label>Select Tip %</label>
-      <select-tip />
+      <select-tip @tip-selected="onSelectTip"/>
     </div>
     <b-form-group
         class="form-group"
         id="input-group-2"
         label="Number of People"
         label-for="num-people">
-<!--      <small class="error">Can't be zero</small>-->
+      <small class="error" v-if="form.tipPercentage <= 0 && form.tipPercentage !== null">Can't be zero</small>
       <b-input-group size="lg">
         <b-input-group-text>
           <img src="../assets/images/icon-person.svg" /></b-input-group-text>
         <b-form-input id="num-people"
-                      type="text"
-                      placeholder="0"></b-form-input>
+                      type="number"
+                      placeholder="0"
+                      step="1"
+                      @keydown="blockDecimal"
+                      v-model="form.numOfPeople"></b-form-input>
 
       </b-input-group>
     </b-form-group>

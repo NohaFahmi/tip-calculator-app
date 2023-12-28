@@ -3,15 +3,48 @@ import CalculatorForm from "@/components/calculator-form.vue";
 import Results from "@/components/results.vue";
 </script>
 
+<script>
+
+export default {
+  data() {
+    return {
+      result: {
+        totalTip: 0,
+        totalAmount: 0
+      }
+    }
+  },
+  methods: {
+    calculateSplitAmount(data) {
+      if (data.bill && data.numOfPeople) {
+        const tipAmountOfBill = Number(data.bill) * (Number(data.tipPercentage) / 100);
+        const totalBillWithTip = Number(data.bill) + tipAmountOfBill;
+        this.result.totalTip = tipAmountOfBill / Number(data.numOfPeople);
+        this.result.totalAmount = totalBillWithTip / Number(data.numOfPeople);
+      }
+    },
+    onResultsReset() {
+      this.result = {
+        totalTip: 0,
+        totalAmount: 0
+      }
+    }
+  },
+}
+</script>
+
 <template>
   <div class="page-container">
     <h1 class="page-title">spli<br />tter</h1>
     <div class="calculator-wrapper">
       <div class="form-wrapper">
-        <calculator-form/>
+        <calculator-form
+            @change-form-data="calculateSplitAmount"/>
       </div>
       <div class="results-wrapper">
-        <results />
+        <results :results="result"
+                 @reset-results="onResultsReset"
+                  />
       </div>
     </div>
   </div>

@@ -1,20 +1,42 @@
 <script>
 export default {
-  name: "select-tip"
+  data() {
+    return {
+      tipOptions: [
+        {id: 1, value: 5},
+        {id: 2, value: 10},
+        {id: 3, value: 15},
+        {id: 4, value: 25},
+        {id: 5, value: 50},
+      ],
+      selectedTipValue: 0,
+      customTipValue: null
+    }
+  },
+  methods: {
+    onTipSelected(tipValue) {
+      this.selectedTipValue = tipValue;
+      this.$emit('tip-selected', tipValue);
+    },
+  }
 }
 </script>
 
 <template>
   <div class="options-group">
-    <span class="option">5%</span>
-    <span class="option selected">5%</span>
-    <span class="option">5%</span>
-    <span class="option">5%</span>
-    <span class="option">5%</span>
+    <span class='option'
+          v-for="(tip) in tipOptions"
+          :key="tip.id"
+          @click="onTipSelected(tip.value)"
+          :class="{selected: (selectedTipValue === tip.value)}">
+      {{tip.value}}%
+    </span>
     <span class="option custom">
        <b-form-input id="custom-option"
-                     type="text"
-                     placeholder="Custom"></b-form-input>
+                     type="number"
+                     placeholder="Custom"
+                     v-model="customTipValue"
+                     @input="onTipSelected(this.customTipValue)"></b-form-input>
     </span>
   </div>
 </template>
