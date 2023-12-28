@@ -39,7 +39,7 @@ import Results from "@/components/results.vue";
     border-radius: 20px;
     padding: 25px;
     gap: 35px;
-    height: 75vh;
+    height: 70vh;
     max-width: 950px;
     margin: 0 auto;
     box-shadow: 10px 10px 10px var(--grayish-cyan);

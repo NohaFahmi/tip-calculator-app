@@ -83,6 +83,8 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  height: 100%;
+  justify-content: space-between;
   @media (max-width: 950px) {
     gap: 20px;
   }

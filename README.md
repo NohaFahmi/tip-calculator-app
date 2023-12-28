@@ -1,29 +1,41 @@
-# tip-calculator
+# Frontend Mentor - Tip calculator app solution
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Recommended IDE Setup
+## Table of contents
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+- [Built with](#built-with)
 
-## Customize configuration
+## Overview
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### The challenge
 
-## Project Setup
+Users should be able to:
 
-```sh
-npm install
-```
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Calculate the correct tip and total cost of the bill per person
 
-### Compile and Hot-Reload for Development
+### Screenshot
 
-```sh
-npm run dev
-```
+![Tip-Calculator-Desktop](./screenshots/tip-calculator-active-desktop.png)
+![Tip-Calculator-Active-Desktop](./screenshots/tip-calculator-active-desktop.png)
+![Tip-Calculator-Mobile](./screenshots/tip-calculator-mobile.png)
 
-### Compile and Minify for Production
+### Links
 
-```sh
-npm run build
-```
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+
+## Built with 
+
+- Vue.js framework
+- Vue 3 with Vite
+- CSS, HTML
+- JavaScript
+
