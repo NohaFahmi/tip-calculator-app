@@ -1,9 +1,15 @@
 <script>
+import {store} from "@/store.js";
+
 export default {
-  props: ['results'],
+  data() {
+    return {
+      store
+    }
+  },
   methods: {
     onResetResult() {
-      this.$emit('reset-results');
+      this.store.reset();
     }
   }
 }
@@ -16,17 +22,17 @@ export default {
         <span class="label">Tip Amount</span>
         <span>/ person</span>
       </p>
-      <p class="tip-per-person_value">${{results.totalTip.toFixed(2)}}</p>
+      <p class="tip-per-person_value">${{store.results.totalTip.toFixed(2)}}</p>
     </div>
     <div class="total-per-person">
       <p class="total-per-person_text">
         <span class="label">Total</span>
         <span>/ person</span>
       </p>
-      <p class="total-per-person_value">${{results.totalAmount.toFixed(2)}}</p>
+      <p class="total-per-person_value">${{store.results.totalAmount.toFixed(2)}}</p>
     </div>
     <b-button class="reset-btn"
-              :disabled="results.totalAmount <= 0 && results.totalTip <= 0"
+              :disabled="store.results.totalAmount <= 0 && store.results.totalTip <= 0"
               @click="onResetResult">RESET</b-button>
   </div>
 </template>

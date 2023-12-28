@@ -2,25 +2,28 @@
 import SelectTip from "@/components/select-tip.vue";
 </script>
 <script>
+import {store} from "@/store.js";
+import {watchEffect} from "vue";
 export default {
+
   data() {
     return {
-      form: {
-        bill: null,
-        numOfPeople: null,
-        tipPercentage: null
-      }
+      store
     }
   },
   created() {
+    watchEffect(() => {
+      this.store.updateResult();
+    })
+  },
+  beforeUnmount() {
+    const stop = watchEffect(() => {})
+    stop()
   },
   methods: {
-    onFormChange() {
-      this.$emit('change-form-data', this.form);
-    },
     onSelectTip(tip) {
-      this.form.tipPercentage = tip;
-      this.$emit('change-form-data', this.form);
+      this.store.setTipPercentage(tip);
+      this.store.updateResult()
     },
     blockDecimal(event) {
       if (event.keyCode === 190 || event.keyCode === 110) {
@@ -32,21 +35,20 @@ export default {
 </script>
 <template>
   <b-form class="calc-form"
-          @change="onFormChange"
           ref="calcForm">
     <b-form-group
         class="form-group"
         id="input-group-1"
         label="Bill"
         label-for="bill-val">
-      <small class="error" v-if="form.bill <= 0 && form.bill !== null">Can't be zero</small>
+      <small class="error" v-if="store.form.bill <= 0 && store.form.bill !== null">Can't be zero</small>
       <b-input-group size="lg">
         <b-input-group-text>
-          <img src="../assets/images/icon-dollar.svg" /></b-input-group-text>
+          <img src="../assets/images/icon-dollar.svg" alt="icon-dollar"/></b-input-group-text>
         <b-form-input id="bill-val"
                       type="number"
                       placeholder="0"
-                      v-model="form.bill"></b-form-input>
+                      v-model="store.form.bill"></b-form-input>
 
       </b-input-group>
     </b-form-group>
@@ -59,16 +61,16 @@ export default {
         id="input-group-2"
         label="Number of People"
         label-for="num-people">
-      <small class="error" v-if="form.tipPercentage <= 0 && form.tipPercentage !== null">Can't be zero</small>
+      <small class="error" v-if="store.form.numOfPeople <= 0 && store.form.numOfPeople !== null">Can't be zero</small>
       <b-input-group size="lg">
         <b-input-group-text>
-          <img src="../assets/images/icon-person.svg" /></b-input-group-text>
+          <img src="../assets/images/icon-person.svg" alt="icon-person"/></b-input-group-text>
         <b-form-input id="num-people"
                       type="number"
                       placeholder="0"
                       step="1"
                       @keydown="blockDecimal"
-                      v-model="form.numOfPeople"></b-form-input>
+                      v-model="store.form.numOfPeople"></b-form-input>
 
       </b-input-group>
     </b-form-group>

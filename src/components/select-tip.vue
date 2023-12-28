@@ -28,7 +28,7 @@ export default {
           v-for="(tip) in tipOptions"
           :key="tip.id"
           @click="onTipSelected(tip.value)"
-          :class="{selected: (selectedTipValue === tip.value)}">
+          :class="{selected: (this.selectedTipValue === tip.value)}">
       {{tip.value}}%
     </span>
     <span class="option custom">
