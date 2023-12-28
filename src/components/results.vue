@@ -66,6 +66,13 @@
     font-size: 18px;
     border: none;
     margin-top: auto;
+    opacity: 0.9;
+    &:hover {
+      opacity: 1;
+    }
+    &:disabled {
+      opacity: 0.5;
+    }
     @media (max-width: 950px) {
       font-size: 14px;
       height: 35px;

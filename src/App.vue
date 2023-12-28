@@ -55,7 +55,6 @@ import Results from "@/components/results.vue";
       width: 100%;
     }
     .results-wrapper {
-      //border: 1px solid blue;
       background-color: var(--very-dark-cyan);
       width: 100%;
       border-radius: 10px;

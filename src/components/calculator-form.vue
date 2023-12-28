@@ -10,6 +10,7 @@ import SelectTip from "@/components/select-tip.vue";
         id="input-group-1"
         label="Bill"
         label-for="bill-val">
+<!--      <small class="error">Can't be zero</small>-->
       <b-input-group size="lg">
         <b-input-group-text>
           <img src="../assets/images/icon-dollar.svg" /></b-input-group-text>
@@ -28,6 +29,7 @@ import SelectTip from "@/components/select-tip.vue";
         id="input-group-2"
         label="Number of People"
         label-for="num-people">
+<!--      <small class="error">Can't be zero</small>-->
       <b-input-group size="lg">
         <b-input-group-text>
           <img src="../assets/images/icon-person.svg" /></b-input-group-text>
@@ -61,10 +63,22 @@ import SelectTip from "@/components/select-tip.vue";
   .input-group-text, .form-control {
     background-color: var(--very-light-grayish-cyan);
     border: none;
-    border-radius: 0;
+    border-radius: 5px;
     color: var(--very-dark-cyan);
-    &:focus {
+    cursor: pointer;
+    &:focus, &:focus-visible {
       box-shadow: none;
+    }
+  }
+  .input-group {
+    cursor: pointer;
+    &:hover {
+      outline: 2px solid var(--strong-cyan);
+      border-radius: 5px;
+    }
+    &.invalid {
+      outline: 2px solid orangered;
+      border-radius: 5px;
     }
   }
   .select-input-group {
@@ -73,6 +87,15 @@ import SelectTip from "@/components/select-tip.vue";
     gap: 10px;
     width: 100%;
     max-width: 400px;
+  }
+  .form-group {
+    position: relative;
+    .error {
+      color: orangered;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }
 </style>
