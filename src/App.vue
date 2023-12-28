@@ -40,10 +40,12 @@ import Results from "@/components/results.vue";
     padding: 25px;
     gap: 35px;
     height: 70vh;
+    max-height: 460px;
     max-width: 950px;
     margin: 0 auto;
     box-shadow: 10px 10px 10px var(--grayish-cyan);
     @media (max-width: 900px) {
+      max-height: unset;
       flex-direction: column;
       gap: 25px;
       padding: 15px;

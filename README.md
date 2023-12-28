@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Tip calculator solution on FrontendMentors](https://www.frontendmentor.io/solutions/tip-calculator-with-vue-3-QubXtOYqSZ)
+- Live Site URL: [Tip Calculator](https://tip-calculator-app-nu-one.vercel.app/)
 
 
 ## Built with 
