@@ -11,7 +11,7 @@ export const store = reactive({
         totalAmount: 0
     },
     updateResult() {
-        if (this.form.bill && this.form.numOfPeople) {
+        if (this.form.bill > 0 && this.form.numOfPeople > 0) {
             const tipAmountOfBill = Number(this.form.bill) * (Number(this.form.tipPercentage) / 100);
             const totalBillWithTip = Number(this.form.bill) + tipAmountOfBill;
             const totalTip = tipAmountOfBill / Number(this.form.numOfPeople);
